@@ -12,7 +12,7 @@ var vm = new Vue({
     el: '#app',
     data: {
         ipServer: "",
-        ipData: "224.0.23.0",
+        ipData: "192.168.64.2",
         el: {
             deojData: "0x013001",
             esvData: "0x62",
@@ -30,7 +30,8 @@ var vm = new Vue({
         rbOrder: "normalOrder",
         filters: ["showGet", "showInf", "showGetres", "showSNA"],
         packet_list: [],
-        packetDetail: ""
+        packetDetail: "",
+        seen: false
     },
     methods: {
         buttonClickSearch: function () {
@@ -86,6 +87,9 @@ ws.onopen = function(event){
 ws.onmessage = function(event){
     console.log("server_to_client", event.data);
     const obj = JSON.parse(event.data);
+    const objLen = obj.uint8Array.length;
+
+    const rep = obj.uint8Array[objLen - 1] + (obj.uint8Array[objLen - 2] << 8) + (obj.uint8Array[objLen - 3] << 16) + (obj.uint8Array[objLen - 4] << 24);
     if (obj.ip != vm.ipServer ) {
         const packet_id = 'packet-' + packetId++;
         const pkt = {
@@ -93,7 +97,8 @@ ws.onmessage = function(event){
             timeStamp:timeStamp(),
             direction:"R",
             ip:obj.ip,
-            data:obj.uint8Array
+            data:obj.uint8Array,
+            reply: rep
         }
         dataLogArray.push(pkt);
         displayLog();
@@ -109,7 +114,8 @@ function displayLog() {
             timeStamp: dataLog.timeStamp,
             direction: dataLog.direction,
             address: dataLog.ip,
-            hex: elFormat(dataLog.data)
+            hex: elFormat(dataLog.data),
+            reply: dataLog.reply
         }
         if ((dataLog.direction == "T") || filterEsv(esv)) {
             log.push(pkt);

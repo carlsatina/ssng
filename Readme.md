@@ -15,19 +15,20 @@ Windows PC, Macintosh or Raspberry Pi on which Node.js is installed.
 ## Installation
 ターミナルで "npm i -g ssng" を実行する
 
-Execute "npm i -g ssng" on a terminal
-
+Execute the following command on a terminal
+````bash
+npm install
+npm run start
+````
 
 ## Launch
 #### Japanese
-1. ターミナルで "ssng" を実行する   
-2. Web Browserを起動し、localhost:3000 をアクセスする  
-3. SSNGのGUIが表示される(Fig. 1)  
+1. Web Browserを起動し、localhost:3000 をアクセスする  
+2. SSNGのGUIが表示される(Fig. 1)  
 
 #### English
-1. execute "ssng" on a terminal  
-2. Launch a Web Browser and access localhost:3000
-3. GUI of SSNG is displayed(Fig. 1)  
+1. Launch a Web Browser and access localhost:3000
+2. GUI of SSNG is displayed(Fig. 1)  
 
 ![gui1](https://raw.githubusercontent.com/KAIT-HEMS/ssng-node/master/_graphics/gui1.png "gui1")  
 <div style="text-align: center;">Fig.1 GUI of SSNG</div>
