@@ -1,7 +1,7 @@
 {
-    "name": "ssng",
+    "name": "leaflet-link",
     "version": "0.0.15",
-    "description": "SSNG, a tool for ECHONET Lite packets",
+    "description": "Tool for ECHONET Lite packets",
     "main": "app.js",
     "scripts": {
         "start": "node app.js",
