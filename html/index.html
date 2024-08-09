@@ -200,7 +200,14 @@ body {
                         <div class="input-group-prepend">
                             <div class="input-group-text">EPC</div>
                         </div>
-                        <input type="text" class="form-control" v-model="el.epcData" v-bind:style="epcDataStyle">
+                        <select class="form-control form-control-sm" id="send-packet-deoj-class-code" v-bind:style="epcDataStyle" v-model="el.epcData">
+                            <option value="">
+                                Select a class
+                            </option>
+                            <option v-for="d in el.epcDataList" v-bind:value="d.value">
+                                {{ d.value }} : {{d.desc}}
+                            </option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-6">
@@ -222,150 +229,6 @@ body {
             </form>
         </div>
     </div>
-
-
-    <!-- Shortcut Buttons for Smart Meter -->
-    <div class="card mb-3">
-        <div class="card-header py-1">
-            <div class="row">
-                <div class="col-auto h5 mt-2">Shortcut Buttons for Smart Meter</div>
-                <div class="col"></div>
-                <div class="col-auto">
-                </div>
-            </div>
-        </div>
-
-        <div class="card-body pt-2 pb-2">
-            <form>
-                <div class="form-row align-items-center">
-                    <div class="col-4">
-                        <div class="input-group input-group-sm mb-2">
-                              <div class="w-100">
-                                  <button type="button" class="btn btn-primary btn-block" v-on:click="GetMeasuredIEE" title="Measured Instantaneous electric energy">Get Measured Instantaneous Energy</button>
-                              </div>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="input-group input-group-sm mb-2">
-                              <div class="input-group-prepend">
-                                  <div class="input-group-text bg-secondary text-light">DEOJ</div>
-                              </div>
-                              <input type="text" class="form-control"  value="0x028801" readonly>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="input-group input-group-sm mb-2">
-                              <div class="input-group-prepend">
-                                  <div class="input-group-text bg-secondary text-light">ESV</div>
-                              </div>
-                              <input type="text" class="form-control"  value="0x62" readonly>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="input-group input-group-sm mb-2">
-                              <div class="input-group-prepend">
-                                  <div class="input-group-text bg-secondary text-light">EPC</div>
-                              </div>
-                              <input type="text" class="form-control"  value="0xe7" readonly>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="input-group input-group-sm mb-2">
-                              <div class="input-group-prepend">
-                                  <div class="input-group-text bg-secondary text-light">EDT</div>
-                              </div>
-                              <input type="text" class="form-control"  value="0x00" readonly>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-row align-items-center">
-                    <div class="col-4">
-                        <div class="input-group input-group-sm mb-2">
-                              <div class="w-100">
-                                  <button type="button" class="btn btn-success btn-block" v-on:click="GetMeasuredCAofEE" title="Measured cumulative amount of electric energy">Get Measured Amount of Energy</button>
-                              </div>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="input-group input-group-sm mb-2">
-                              <div class="input-group-prepend">
-                                  <div class="input-group-text bg-secondary text-light">DEOJ</div>
-                              </div>
-                              <input type="text" class="form-control"  value="0x028801" readonly>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="input-group input-group-sm mb-2">
-                              <div class="input-group-prepend">
-                                  <div class="input-group-text bg-secondary text-light">ESV</div>
-                              </div>
-                              <input type="text" class="form-control"  value="0x62" readonly>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="input-group input-group-sm mb-2">
-                              <div class="input-group-prepend">
-                                  <div class="input-group-text bg-secondary text-light">EPC</div>
-                              </div>
-                              <input type="text" class="form-control"  value="0xe0" readonly>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="input-group input-group-sm mb-2">
-                              <div class="input-group-prepend">
-                                  <div class="input-group-text bg-secondary text-light">EDT</div>
-                              </div>
-                              <input type="text" class="form-control"  value="0x00" readonly>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-row align-items-center">
-                    <div class="col-4">
-                        <div class="input-group input-group-sm mb-2">
-                              <div class="w-100">
-                                  <button type="button" class="btn btn-warning btn-block" v-on:click="GetMeasuredICurrent" title="Measured Instantaneous Current">Get Measured Instantaneous Current</button>
-                              </div>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="input-group input-group-sm mb-2">
-                              <div class="input-group-prepend">
-                                  <div class="input-group-text bg-secondary text-light">DEOJ</div>
-                              </div>
-                              <input type="text" class="form-control"  value="0x028801" readonly>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="input-group input-group-sm mb-2">
-                              <div class="input-group-prepend">
-                                  <div class="input-group-text bg-secondary text-light">ESV</div>
-                              </div>
-                              <input type="text" class="form-control"  value="0x62" readonly>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="input-group input-group-sm mb-2">
-                              <div class="input-group-prepend">
-                                  <div class="input-group-text bg-secondary text-light">EPC</div>
-                              </div>
-                              <input type="text" class="form-control"  value="0xe8" readonly>
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="input-group input-group-sm mb-2">
-                              <div class="input-group-prepend">
-                                  <div class="input-group-text bg-secondary text-light">EDT</div>
-                              </div>
-                              <input type="text" class="form-control"  value="0x00" readonly>
-                        </div>
-                    </div>
-                </div>
-
-            </form>
-        </div>
-    </div>
-    <!-- END Shortcut Buttons for Smart Meter -->
 
 
 	<!-- パケットモニター -->
