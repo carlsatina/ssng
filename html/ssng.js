@@ -14,7 +14,17 @@ var vm = new Vue({
         ipServer: "",
         ipData: "192.168.64.2",
         el: {
-            deojData: "0x013001",
+            deojDataList: [
+                {
+                    "value": "0x013001",
+                    "description": "Home Air Conditioner"
+                },
+                {
+                    "value": "0x028A01",
+                    "description": "High-Voltage Smart Electric Energy Meter"
+                }
+            ],
+            deojData: "0x028A01",
             esvData: "0x62",
             epcData: "0x80",
             edtData: "0x30"
@@ -31,7 +41,7 @@ var vm = new Vue({
         filters: ["showGet", "showInf", "showGetres", "showSNA"],
         packet_list: [],
         packetDetail: "",
-        seen: false
+        seen: true
     },
     methods: {
         buttonClickSearch: function () {
